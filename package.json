@@ -1,0 +1,33 @@
+{
+    "name": "collectors-map",
+    "version": "1.0.0",
+    "description": "Collectors map for RDR2",
+    "main": "src/index.js",
+    "repository": {
+        "url": "https://github.com/carlymarie/collectors-map-app"
+    },
+    "dependencies": {
+        "electron-log": "^4.0.7",
+        "electron-squirrel-startup": "*",
+        "update-electron-app": "^1.5.0"
+    },
+    "scripts": {
+        "start": "electron .",
+        "clean": "rimraf dist",
+        "exe32": "electron-packager . collectors-map --platform win32 --arch ia32 --out dist/ --icon resources/app.ico",
+        "exe64": "electron-packager . collectors-map --platform win32 --arch x64 --out dist/ --icon resources/app.ico",
+        "set32": "electron-installer-windows --src dist/collectors-map-win32-ia32/ --dest dist/installers/ia32/ --config config.json",
+        "set64": "electron-installer-windows --src dist/collectors-map-win32-x64/ --dest dist/installers/x64/ --config config.json",
+        "build": "npm run clean && npm run exe32 && npm run set32 && npm run exe64 && npm run set64"
+    },
+    "author": "Kira Cat",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "*",
+        "electron-browser-storage": "*",
+        "electron-installer-windows": "*",
+        "electron-packager": "*",
+        "electron-rebuild": "*",
+        "rimraf": "*"
+    }
+}
